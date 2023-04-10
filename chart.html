@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title> Implementando o ChartJs </title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1> Dashboard </h1>
+        </div>
+        <div class="content">
+            <div class="chart">
+                <canvas id="myChart"></canvas>
+            </div>   
+            <div class="chart">
+                <canvas id="myChart2"></canvas>
+            </div>  
+        </div>
+    </div>
+</body>
+<script>
+    const labels = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00'      
+    ]
+
+    const labels2 = [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho'      
+    ]
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Temperatura',
+            backgroundColor: '#ff2222',
+            borderColor: '#ff2222',
+            data: [30, 29, 28, 25, 22, 33],
+        },
+        {
+            label: 'Umidade',
+            backgroundColor: '#6200ff',
+            borderColor: '#6200ff',
+            data: [80, 82, 80, 85, 80, 83],
+        }]
+    };
+
+    const data2 = {
+        labels: labels2,
+        datasets: [{
+            label: 'Temperatura Média',
+            backgroundColor: '#ff2222',
+            borderColor: '#ff2222',
+            data: [22, 24, 27, 23, 20, 18],
+        },
+        {
+            label: 'Umidade Média',
+            backgroundColor: '#6200ff',
+            borderColor: '#6200ff',
+            data: [90, 89, 93, 87, 88, 82],
+        }]
+    };
+    
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: 'rgba(255, 255, 255, 0.85)',
+                        font: {
+                            size: 14,
+                            family: 'Poppins',
+                            weight: 200,
+                        }
+                    }
+                }
+            }
+        }     
+    }   
+
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: {
+                        color: 'rgba(255, 255, 255, 0.85)',
+                        font: {
+                            size: 14,
+                            family: 'Poppins',
+                            weight: 200
+                        }
+                    }
+                }
+            }
+        }     
+    }
+</script>
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    )
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    )
+
+</script>
+</html> 
